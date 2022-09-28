@@ -1,0 +1,16 @@
+version: "2"
+services:
+  elixir:
+    image: elixir:1.14
+    volumes:
+      - .:/app:delegated
+    working_dir: /app
+    ports:
+      - 4000:4000
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
